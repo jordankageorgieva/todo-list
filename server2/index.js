@@ -121,6 +121,13 @@ app.get('/data/todos/:id', (req, res) => {
     res.status(200).json(data[req.params.id]);
 });
 
+app.put('/data/todos/:id', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Content-Type', 'application/json');
+    data[req.params.id] = req.body;
+    res.status(200).json(data[req.params.id]);
+});
+
 app.use('/', (req, res) => {
     res.send('Hello from server.')
 });
