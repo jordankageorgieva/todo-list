@@ -10,7 +10,8 @@ export default function TodoList() {
 
     useEffect(() => {
         // const url = 'http://localhost:3030/jsonstore/todos';
-        const url = 'http://localhost:3001/data/todos';
+        // const url = 'http://localhost:3001/data/todos';
+        const url = 'https://todo-list-server-tau.vercel.app/data/todos';
         fetch(url)
             .then(res => res.json())
             .then(data => {
