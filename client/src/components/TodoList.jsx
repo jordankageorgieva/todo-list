@@ -41,7 +41,7 @@ export default function TodoList() {
     const handleUpdate = async (id) => {
         console.log('Button clicked with id: ' + id);
         const todo = todos.find(x => x._id === id);
-        const response = await fetch(`http://localhost:3030/jsonstore/todos/${id}`, {
+        const response = await fetch(`https://todo-list-server-tau.vercel.app/data/todos/${id}`, {
             method: 'put',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
