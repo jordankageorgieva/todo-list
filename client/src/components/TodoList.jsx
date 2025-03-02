@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TodoListItem from './TodoListItem';
 
+
 export default function TodoList() {
     const [todos, setTodos] = useState([]);
     const [newTodo, setNewTodo] = useState('');
@@ -51,6 +52,25 @@ export default function TodoList() {
         }
     };
 
+    const handleRemoveTodo = async (_id) => {
+        try {
+            const response = await fetch(`http://localhost:3001/data/todos/${_id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                setTodos(todos.filter(todo => todo._id !== _id));
+            } else {
+                console.error('Failed to remove todo:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error removing todo:', error);
+        }
+    };
+
     const buttonClickHandler = (_id) => {
         // Implement the button click handler logic here
     };
@@ -98,6 +118,7 @@ export default function TodoList() {
                                     text={todo.text}
                                     isCompleted={todo.isCompleted}
                                     buttonClickHandler={buttonClickHandler}
+                                    handleRemoveTodo={handleRemoveTodo}
                                 />
                             ))}
                         </tbody>

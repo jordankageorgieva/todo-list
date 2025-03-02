@@ -154,6 +154,19 @@ app.post('/data/todos/:id', (req, res) => {
     res.status(201).json(data[id]);
 });
 
+app.delete('/data/todos/:id', (req, res) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Content-Type', 'application/json');
+    const id = req.params.id;
+    console.log(`DELETE request received for ID: ${id}`);
+    if (!data[id]) {
+        return res.status(404).json({ error: 'Todo not found' });
+    }
+    delete data[id];
+    console.log(`Todo with ID: ${id} deleted successfully`);
+    res.status(200).json({ message: 'Todo deleted successfully' });
+});
+
 app.use('/', (req, res) => {
     res.send('Hello from server.');
 });

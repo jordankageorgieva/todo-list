@@ -4,7 +4,8 @@ export default function TodoListItem({
     _id,
     text,
     isCompleted,
-    buttonClickHandler
+    buttonClickHandler,
+    handleRemoveTodo
 }) {
     return (
         <>
@@ -14,6 +15,7 @@ export default function TodoListItem({
                 <td>{isCompleted ? "Completed" : "Incompleted"}</td>
                 <td className="todo-action">
                     <button className="btn todo-btn" onClick={() => buttonClickHandler(_id)}>Change status</button>
+                    <button className="btn btn-remove" onClick={() => handleRemoveTodo(_id)}>Remove</button>
                 </td>
             </tr>
         </>

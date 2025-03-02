@@ -151,3 +151,13 @@ body {
 .add-btn-container .btn:hover {
   background-color: #218838;
 }
+
+.todo-action .btn-remove {
+  background-color: #dc3545;
+  margin-left: 10px;
+  length: 120px;
+}
+
+.todo-action .btn-remove:hover {
+  background-color: #c82333;
+}
