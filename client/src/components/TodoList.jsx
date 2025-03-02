@@ -71,14 +71,36 @@ export default function TodoList() {
         }
     };
 
-    const buttonClickHandler = (_id) => {
-        // Implement the button click handler logic here
+    const handleChangeTodo = async (_id) => {
+        const todo = todos.find(todo => todo._id === _id);
+        if (!todo) return;
+
+        const updatedTodo = { ...todo, isCompleted: !todo.isCompleted };
+
+        try {
+            const response = await fetch(`http://localhost:3001/data/todos/${_id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedTodo)
+            });
+
+            if (response.ok) {
+                setTodos(todos.map(todo => (todo._id === _id ? updatedTodo : todo)));
+            } else {
+                console.error('Failed to update todo:', response.statusText);
+            }
+        } catch (error) {
+            console.error('Error updating todo:', error);
+        }
     };
 
     return (
         <>
             <section className="todo-list-container">
-                <h1>Todo List</h1>
+                <h1>Прошка давам и прошка искам!</h1>
+                <h2>Сирни заговезни, 2 март 2025</h2>
 
                 <div className="add-btn-container">
                     <form onSubmit={handleAddTodo}>
@@ -86,10 +108,10 @@ export default function TodoList() {
                             type="text"
                             value={newTodo}
                             onChange={(e) => setNewTodo(e.target.value)}
-                            placeholder="Add new todo"
+                            placeholder="Добави "
                             required
                         />
-                        <button type="submit" className="btn">+ Add new Todo</button>
+                        <button type="submit" className="btn">+ Добави текст за прошка!</button>
                     </form>
                 </div>
 
@@ -105,9 +127,9 @@ export default function TodoList() {
                     <table className="table">
                         <thead>
                             <tr>
-                                <th className="table-header-task">Task</th>
-                                <th className="table-header-status">Status</th>
-                                <th className="table-header-action">Action</th>
+                                <th className="table-header-task">Прошка</th>
+                                <th className="table-header-status">Сатус</th>
+                                <th className="table-header-action">Действие</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -117,7 +139,7 @@ export default function TodoList() {
                                     _id={todo._id}
                                     text={todo.text}
                                     isCompleted={todo.isCompleted}
-                                    buttonClickHandler={buttonClickHandler}
+                                    handleChangeTodoStatus={handleChangeTodo}
                                     handleRemoveTodo={handleRemoveTodo}
                                 />
                             ))}

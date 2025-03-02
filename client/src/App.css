@@ -21,6 +21,11 @@ body {
   color: #333;
 }
 
+.todo-list-container h2 {
+  text-align: center;
+  color: #333;
+}
+
 /* Add Button */
 .add-btn-container {
   text-align: center;
