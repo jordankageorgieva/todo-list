@@ -122,3 +122,32 @@ body {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.add-btn-container form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-btn-container input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: 10px;
+  width: 60%;
+}
+
+.add-btn-container .btn {
+  background-color: #28a745;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.add-btn-container .btn:hover {
+  background-color: #218838;
+}
