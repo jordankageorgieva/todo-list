@@ -1,10 +1,15 @@
-const express = require('express')
-const app = express()
-const port = 3001
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const port = 3001;
 
+// Middleware to parse JSON request bodies
+app.use(express.json());
 
-app.listen(port, console.log(`Server is running on port ${port}`));
-// console.log('http://localhost:3001');
+// Middleware to enable CORS
+app.use(cors());
+
+app.listen(port, () => console.log(`Server is running on port ${port}`));
 
 const data = {
     "todo_1": {
@@ -107,7 +112,7 @@ const data = {
         "text": "Fill gas tank",
         "isCompleted": false
     }
-}
+};
 
 app.get('/data/todos', (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -124,10 +129,31 @@ app.get('/data/todos/:id', (req, res) => {
 app.put('/data/todos/:id', (req, res) => {
     res.header('Access-Control-Allow-Origin', '*');
     res.header('Content-Type', 'application/json');
-    data[req.params.id] = req.body;
-    res.status(200).json(data[req.params.id]);
+    const id = req.params.id;
+    console.log(`PUT request received for ID: ${id}`);
+    if (!data[id]) {
+        return res.status(404).json({ error: 'Todo not found' });
+    }
+    data[id] = req.body;
+    console.log(`Todo with ID: ${id} updated successfully`);
+    res.status(200).json(data[id]);
+});
+
+app.post('/data/todos/:id', (req, res) => { 
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Content-Type', 'application/json');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token');
+    const id = req.params.id;
+    console.log(`POST request received for ID: ${id}`);
+    if (data[id]) {
+        return res.status(400).json({ error: 'Todo already exists' });
+    }
+    data[id] = req.body;
+    console.log(`Todo with ID: ${id} created successfully`);
+    res.status(201).json(data[id]);
 });
 
 app.use('/', (req, res) => {
-    res.send('Hello from server.')
+    res.send('Hello from server.');
 });
