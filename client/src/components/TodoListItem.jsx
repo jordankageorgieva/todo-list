@@ -12,7 +12,7 @@ export default function TodoListItem({
             {/* <!-- Todo item --> */}
             <tr className={styles["todo"] + (isCompleted ? " " + styles["is-completed"] : "")}>
                 <td>{text}</td>
-                <td>{isCompleted ? "Простено" : "Непростено"}</td>
+                <td>{isCompleted ? "Completed" : "Incompleted"}</td>
                 <td className="todo-action">
                     <button className="btn todo-btn" onClick={() => handleChangeTodoStatus(_id)}>Change status</button>
                     <button className="btn btn-remove" onClick={() => handleRemoveTodo(_id)}>Remove</button>
