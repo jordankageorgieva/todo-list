@@ -102,7 +102,7 @@ export default function TodoList() {
     return (
         <>
             <section className="todo-list-container">
-                <h1>Book list!</h1>
+                <h1>Useful Book resources</h1>
                 <h2>2 March 2025</h2>
 
                 <div className="add-btn-container">
