@@ -11,7 +11,7 @@ function App() {
           <img src="/images/todo-icon.png" alt="todo-logo" />
         </span>
         <span className="spacer"></span>
-        <span className="navigation-description">Прости ми!</span>
+        <span className="navigation-description">ToRead</span>
       </header>
 
       {/* <!--Main content-- > */}

@@ -102,8 +102,8 @@ export default function TodoList() {
     return (
         <>
             <section className="todo-list-container">
-                <h1>Прошка давам и прошка искам!</h1>
-                <h2>Сирни заговезни, 2 март 2025</h2>
+                <h1>Book list!</h1>
+                <h2>2 March 2025</h2>
 
                 <div className="add-btn-container">
                     <form onSubmit={handleAddTodo}>
@@ -111,10 +111,10 @@ export default function TodoList() {
                             type="text"
                             value={newTodo}
                             onChange={(e) => setNewTodo(e.target.value)}
-                            placeholder="Добави "
+                            placeholder="Add a book to read..."
                             required
                         />
-                        <button type="submit" className="btn">+ Добави текст за прошка!</button>
+                        <button type="submit" className="btn">+ Book to read!</button>
                     </form>
                 </div>
 
@@ -130,9 +130,9 @@ export default function TodoList() {
                     <table className="table">
                         <thead>
                             <tr>
-                                <th className="table-header-task">Прошка</th>
-                                <th className="table-header-status">Сатус</th>
-                                <th className="table-header-action">Действие</th>
+                                <th className="table-header-task">Book</th>
+                                <th className="table-header-status">Status</th>
+                                <th className="table-header-action">Action</th>
                             </tr>
                         </thead>
                         <tbody>
