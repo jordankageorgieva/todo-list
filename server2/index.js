@@ -11,7 +11,48 @@ app.use(cors());
 
 app.listen(port, () => console.log(`Server is running on port ${port}`));
 
-const data = {};
+const data = {
+    "recource_1": {
+        "_id": "recource_1",
+        "text": "D.L. Parnas, On the Criteria To Be Used in Decomposing Systems into Modules, Communications of the ACM, Vol. 15, No. 12, December 1972, pp. 1053 - 1058",
+        "isCompleted": true
+    },
+    "recource_2": {
+        "_id": "recource_2",
+        "text": "Steve McConnell, Missing in Action: Information Hiding, IEEE Software, Vol. 13, No. 2, March 1996.",
+        "isCompleted": true
+    },
+    "recource_3": {
+        "_id": "recource_3",
+        "text": "Kevlin Henney, Patterns in Java - Encapsulation, Java Spectrum, July–August 2003",
+        "isCompleted": false
+    },
+    "recource_4": {
+        "_id": "recource_4",
+        "text": "Eric Evans, Domain-Driven Design: Tackling Complexity in the Heart of Software, Addison-Wesley, 2003.",
+        "isCompleted": true
+    },
+    "recource_5": {
+        "_id": "recource_5",
+        "text": "G. Booch, Object-Oriented Design with Applications, 3rd Edition, Pearson Education, 2007",
+        "isCompleted": false
+    },
+    "recource_6": {
+        "_id": "recource_6",
+        "text": "Bertrand Meyer, Object-Oriented Software Construction, 2nd Edition, Prentice Hall, 1997",
+        "isCompleted": true
+    },
+    "recource_7": {
+        "_id": "recource_7",
+        "text": "Dennis de Champeaux, Douglas Lea, and Penelope Faure, Object-Oriented System Development, Addison-Wesley, 1993",
+        "isCompleted": true
+    },
+    "recource_8": {
+        "_id": "recource_8",
+        "text": "Kevlin Henney, “Objects of Value”, Application Development Advisor, November–December 2003",
+        "isCompleted": false
+    }
+};
 
 // const data = {
 //     "todo_1": {
