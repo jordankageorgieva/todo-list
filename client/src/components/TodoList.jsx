@@ -7,6 +7,9 @@ export default function TodoList() {
     const [newTodo, setNewTodo] = useState('');
     const [isPending, setIsPending] = useState(false);
 
+    // const url = 'http://localhost:3001/data/todos';
+    const url = 'https://todo-list-server-tau.vercel.app/data/todos';
+
     useEffect(() => {
         fetchTodos();
     }, []);
@@ -14,7 +17,7 @@ export default function TodoList() {
     const fetchTodos = async () => {
         setIsPending(true);
         try {
-            const response = await fetch('http://localhost:3001/data/todos');
+            const response = await fetch(url);
             const data = await response.json();
             setTodos(Object.values(data));
         } catch (error) {
@@ -33,7 +36,7 @@ export default function TodoList() {
         };
 
         try {
-            const response = await fetch(`http://localhost:3001/data/todos/${newTodoItem._id}`, {
+            const response = await fetch(`${url}/${newTodoItem._id}`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -54,7 +57,7 @@ export default function TodoList() {
 
     const handleRemoveTodo = async (_id) => {
         try {
-            const response = await fetch(`http://localhost:3001/data/todos/${_id}`, {
+            const response = await fetch(`${url}/${_id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'
@@ -78,7 +81,7 @@ export default function TodoList() {
         const updatedTodo = { ...todo, isCompleted: !todo.isCompleted };
 
         try {
-            const response = await fetch(`http://localhost:3001/data/todos/${_id}`, {
+            const response = await fetch(`${url}/${_id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
